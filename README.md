@@ -119,12 +119,12 @@ please set argument `--fg` to '0' in shell script.
 Please cite the following paper if the code and dataset help your project:
 
 ```bibtex
-@inproceedings{chen2025unified,
+@inproceedings{chen2024unified,
   title={A unified anomaly synthesis strategy with gradient ascent for industrial anomaly detection and localization},
   author={Chen, Qiyu and Luo, Huiyuan and Lv, Chengkan and Zhang, Zhengtao},
   booktitle={European Conference on Computer Vision},
   pages={37--54},
-  year={2025},
+  year={2024},
   organization={Springer}
 }
 ```
