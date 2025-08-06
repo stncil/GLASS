@@ -1,7 +1,7 @@
-import imgaug.augmenters as iaa
 import numpy as np
 import torch
 import math
+from torchvision import transforms
 
 
 def generate_thr(img_shape, min=0, max=4):
@@ -11,7 +11,13 @@ def generate_thr(img_shape, min=0, max=4):
     perlin_scaley = 2 ** np.random.randint(min_perlin_scale, max_perlin_scale)
     perlin_noise_np = rand_perlin_2d_np((img_shape[1], img_shape[2]), (perlin_scalex, perlin_scaley))
     threshold = 0.5
-    perlin_noise_np = iaa.Sequential([iaa.Affine(rotate=(-90, 90))])(image=perlin_noise_np)
+    
+    # Replace imgaug affine with PyTorch transforms
+    perlin_tensor = torch.from_numpy(perlin_noise_np).unsqueeze(0).unsqueeze(0)  # Add batch and channel dims
+    affine_transform = transforms.RandomAffine(degrees=(-90, 90))
+    perlin_tensor = affine_transform(perlin_tensor)
+    perlin_noise_np = perlin_tensor.squeeze(0).squeeze(0).numpy()
+    
     perlin_thr = np.where(perlin_noise_np > threshold, np.ones_like(perlin_noise_np), np.zeros_like(perlin_noise_np))
     return perlin_thr
 

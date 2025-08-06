@@ -167,7 +167,7 @@ def dataset(
         augment,
 ):
     _DATASETS = {"mvtec": ["datasets.mvtec", "MVTecDataset"], "visa": ["datasets.visa", "VisADataset"],
-                 "mpdd": ["datasets.mvtec", "MVTecDataset"], "wfdd": ["datasets.mvtec", "MVTecDataset"], }
+                 "mpdd": ["datasets.mpdd", "MPDDDataset"], "wfdd": ["datasets.mvtec", "MVTecDataset"], }
     dataset_info = _DATASETS[name]
     dataset_library = __import__(dataset_info[0], fromlist=[dataset_info[1]])
 

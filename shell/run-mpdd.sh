@@ -1,6 +1,6 @@
-datapath=/root/cqy/dataset/MPDD
-augpath=/root/cqy/dataset/dtd/images
-classes=('bracket_black' 'bracket_brown' 'bracket_white' 'connector' 'metal_plate' 'tubes')
+datapath=/mnt/c/Users/akhil/All_my_codes/Portfolio/MPDD/anomaly_dataset_og
+augpath=/mnt/c/Users/akhil/All_my_codes/Portfolio/MPDD/dtd/images
+classes=('bracket_black')
 flags=($(for class in "${classes[@]}"; do echo '-d '"${class}"; done))
 
 cd ..
